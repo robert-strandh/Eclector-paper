@@ -1,4 +1,12 @@
-;;; Run with sbcl --control-stack-size 256
+;;; Run with
+;;;
+;;;   sbcl --control-stack-size 256
+;;;     --eval '(ql:quickload (list "eclector" "the-cost-of-nothing"))'
+;;;     --load fixup.lisp
+;;;
+;;;   lx86cl64 -S 268435456 -Z 268435456
+;;;     -e '(ql:quickload (list "eclector" "the-cost-of-nothing"))'
+;;;     -l fixup.lisp
 
 ;;; Every labeled object is immediately recognizable as circular
 (defun make-quadratic-fixup-1 (limit)
