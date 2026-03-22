@@ -9,8 +9,8 @@
                      (mapcar #'first *cases*))
               :silent t)
 
-(defun call-with-open-stream (system file continuation)
-  (let* ((directory (ql:where-is-system system))
+(defun call-with-open-stream (system-name file continuation)
+  (let* ((directory (ql:where-is-system system-name))
          (filename  (merge-pathnames file directory))
          (content   (alexandria:read-file-into-string filename)))
     (format *trace-output* " ~7:D lines" (count #\Newline content))
@@ -21,9 +21,12 @@
        (funcall continuation stream)))))
 
 (defun test-cases (continuation)
-  (loop :for (system . file) :in *cases*
-        :do (format *trace-output* "  ~14A ~16A" system file)
-            (let ((time (call-with-open-stream system file continuation)))
+  (loop :for (system-name . file) :in *cases*
+        :for directory = (ql:where-is-system system-name)
+        :do (format *trace-output* "  ~32A ~16A"
+                    (alexandria:lastcar (pathname-directory directory))
+                    file)
+            (let ((time (call-with-open-stream system-name file continuation)))
               (format *trace-output* "    ~,3F s~%" time))))
 
 (defun read-with-intrinsic-reader ()
