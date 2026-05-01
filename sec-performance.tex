@@ -30,21 +30,15 @@ used to perform the benchmarking:%
 \texttt{eclector.concrete-syntax-tree:read} depending on the
 benchmark.
 
-We performed the benchmark described above for \sbcl{} and \ccl{} with
-default optimization settings\footnote{Unfortunately, results for ECL
-  are missing since the ECL version packaged for the operating system
-  of the authors has a
-  \href{https://gitlab.com/embeddable-common-lisp/ecl/-/issues/802}{bug}
-  that prevents it form executing \eclector{}.  Building ECL from
-  source failed due to issues with the default C compiler on the
-  author's system.}.  We arbitrarily selected the following large
-\cl{} files as inputs for the benchmark runs: from the library
-\texttt{flexi-streams-20241012-git} the file \texttt{enc-cn-tbl.lisp}
-with $48,418$ lines and from the library \text{screamer-20210807-git}
-the file \texttt{screamer.lisp} with $7,233$ lines.  With \eclector{}
-commit \texttt{b2b22cdf} we obtained the following results on an
-\texttt{Intel(R) Core(TM) i7-4610M CPU @ 3.00GHz} machine with 15 GB
-of memory:
+We performed the benchmark described above for \sbcl{}, \ccl{} and
+\ecl{} with default optimization settings.  We arbitrarily selected
+the following large \cl{} files as inputs for the benchmark runs: from
+the library \texttt{flexi-streams-20241012-git} the file
+\texttt{enc-cn-tbl.lisp} with $48,418$ lines and from the library
+\text{screamer-20210807-git} the file \texttt{screamer.lisp} with
+$7,233$ lines.  With \eclector{} commit \texttt{b2b22cdf} we obtained
+the following results on an \texttt{Intel(R) Core(TM) i7-4610M CPU @
+  3.00GHz} machine with 15 GB of memory:
 
 \vspace{1em}\noindent%
 \begin{tabular}{lrr}
@@ -55,6 +49,9 @@ of memory:
   \ccl{} native           & 0.186 s                  & 0.047 s\\
   \ccl{} \eclector{}      & 1.249 s                  & 0.607 s\\
   \ccl{} \eclector{} CST  & 4.108 s                  & 0.961 s\\
+  \ecl{} native           & 0.118 s                  & 0.045 s\\
+  \ecl{} \eclector{}      & 1.500 s                  & 0.450 s\\
+  \ecl{} \eclector{} CST  & 7.000 s                  & 1.000 s\\
 \end{tabular}
 \vspace{1em}
 
@@ -63,7 +60,7 @@ respective native reader takes 8 \% to 20 \% of the time taken by
 \eclector{} to read the same input.  On the other hand, \eclector{} on
 \sbcl{} is about on par with the native reader of \ccl{}.  When
 producing parse results, \eclector{} takes significantly more time, so
-that the native readers read the same input in 5 \% to 11 \% of the
+that the native readers read the same input in 1.7 \% to 11 \% of the
 time.
 
 \subsection{Pathological inputs}
