@@ -25,7 +25,7 @@ used to perform the benchmarking:%
 \end{listing}
 %
 \vspace{-2em} \noindent where \texttt{<<read>>} is either
-\texttt{cl:read},\\
+\texttt{cl:read},
 \texttt{eclector.reader:read} or\\
 \texttt{eclector.concrete-syntax-tree:read} depending on the
 benchmark.
@@ -69,7 +69,7 @@ time.
 As a second indication of performance characteristics, we have chosen
 two pathological inputs, namely
 \texttt{\#1=(\#2=(\#3= \dots \#$N$\#=(\#1\# \#2\# \#3\# \dots \#$N$\#)))}
-which we call ``input 1 of size $N$'' and
+which we call ``input 1 of size $N$'' and\\
 \texttt{\#1=(\#2=(\#3= \dots \#$N$=(1 2 3 \#$N$\#) \dots \#3\#) \#2\#) \#1\#)}
 which we call ``input 2 of size $N$''.  The benchmark consists of
 reading the two inputs for different sizes $N$ with \sbcl{}'s reader
