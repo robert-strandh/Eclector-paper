@@ -1,8 +1,7 @@
 \section{Introduction}
 
-The \cl{}\cite{ansi:common:lisp}
-\texttt{read} function, usually referred to as the \cl{}
-\emph{reader}, is an obviously essential part of any \cl{}
+The \cl{}\cite{ansi:common:lisp} \texttt{read} function, usually
+referred to as the \emph{reader}, is an essential part of any \cl{}
 implementation.  It is normally used as the first step of the
 \texttt{read-eval-print} loop or in the file compiler, in both cases
 reading forms that are then passed to the evaluator.  Furthermore,
@@ -57,10 +56,10 @@ be useful are:
   role of symbols in the buffer.
 
   The only technique that can faithfully analyze a buffer of \cl{}
-  code is the \cl{} reader.  But then, again, it is undesirable for
-  the reader to intern symbols in any package at all, and the analysis
-  must not fail for errors such as incorrect package names used as
-  package prefixes, incomplete code, or syntax errors in tokens.
+  code is the reader.  But then, again, it is undesirable for the
+  reader to intern symbols in any package, and the analysis must not
+  fail for errors such as incorrect package names used as package
+  prefixes, incomplete code, or syntax errors in tokens.
   Consequently, an extended \cl{} reader that is configurable and can
   recover from errors is necessary for this approach but not
   sufficient on its own.  Instead, such a reader has to collect enough
